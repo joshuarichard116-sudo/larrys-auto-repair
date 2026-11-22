@@ -353,3 +353,134 @@ textarea { min-height: 120px; resize: vertical; }
   .grid-3, .grid-2, .form-row { grid-template-columns: 1fr; }
   .topbar .hide-sm { display: none; }
 }
+
+/* =========================================================
+   Night Garage polish: spinning gear emblem, red neon accents,
+   gentle scroll-in. Everything turns off for reduced motion.
+   ========================================================= */
+:root {
+  --pz-primary: #e3121b;
+  --pz-secondary: #d9dbe0;
+  --pz-tint: #1d1d20;
+  --pz-muted: #a3a6ad;
+  --pz-hairline: #2c2c31;
+  --pz-accent: #e3121b;
+  --neon: 0 0 10px rgba(227, 18, 27, 0.75), 0 0 22px rgba(227, 18, 27, 0.35);
+  --gear-speed: 20s;
+}
+
+/* ---------- Emblem with spinning gear ---------- */
+.emblem {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1330 / 1182;
+  overflow: hidden;
+}
+.emblem img { position: absolute; display: block; max-width: none; }
+.emblem-bg, .emblem-fg { inset: 0; width: 100%; height: 100%; }
+.emblem-gearbox {
+  position: absolute;
+  left: 8.4819%;
+  top: -1.2006%;
+  width: 86.4949%;
+  aspect-ratio: 1;
+  transform: scaleY(0.9562);
+}
+.emblem-carbon { left: 13.636%; top: 13.636%; width: 72.727%; }
+.emblem-gear {
+  position: absolute;
+  inset: 0;
+  -webkit-mask: url(../images/emblem/gear.webp) center / 100% 100% no-repeat;
+  mask: url(../images/emblem/gear.webp) center / 100% 100% no-repeat;
+  animation: spin var(--gear-speed) linear infinite;
+}
+.emblem-gear img { inset: 0; width: 100%; height: 100%; }
+/* chrome shine that stays still while the gear turns underneath */
+.emblem-sheen {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: overlay;
+  animation: spin var(--gear-speed) linear infinite reverse;
+  background: linear-gradient(128deg,
+    rgba(255, 255, 255, 0.65) 0%, rgba(0, 0, 0, 0.5) 24%,
+    rgba(255, 255, 255, 0.7) 44%, rgba(0, 0, 0, 0.55) 58%,
+    rgba(255, 255, 255, 0.4) 76%, rgba(0, 0, 0, 0.45) 100%);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- Neon accents ---------- */
+.site-header { border-bottom-color: transparent; }
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(227, 18, 27, 0.9) 30%, rgba(227, 18, 27, 0.9) 70%, transparent);
+  box-shadow: 0 0 8px rgba(227, 18, 27, 0.6);
+}
+.eyebrow { text-shadow: 0 0 12px rgba(227, 18, 27, 0.45); }
+.section-head h2::after,
+.page-banner h1::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 14px auto 0;
+  border-radius: 3px;
+  background: var(--red);
+  box-shadow: var(--neon);
+}
+.why .num { text-shadow: 0 0 14px rgba(227, 18, 27, 0.45); }
+.btn-red:hover { box-shadow: 0 0 18px rgba(227, 18, 27, 0.55); }
+.card { transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+.card:hover { box-shadow: 0 0 0 1px rgba(227, 18, 27, 0.6), 0 10px 30px rgba(227, 18, 27, 0.22); }
+
+/* slow light streak across the top banner */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%; bottom: -20%;
+  left: -100%;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.05) 40%, rgba(227, 18, 27, 0.12) 50%, rgba(255, 255, 255, 0.05) 60%, transparent);
+  transform: skewX(-18deg);
+  animation: streak 9s ease-in-out infinite;
+}
+.hero .container { position: relative; }
+@keyframes streak {
+  0%, 15% { transform: translateX(0) skewX(-18deg); }
+  65%, 100% { transform: translateX(640%) skewX(-18deg); }
+}
+
+/* moving shine on the red call-to-action strip */
+.cta { position: relative; overflow: hidden; }
+.cta .container { position: relative; }
+.cta::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -100%;
+  width: 40%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-18deg);
+  animation: streak 6s ease-in-out infinite;
+}
+
+/* ---------- Gentle scroll-in (only when JavaScript is on) ---------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+  transition-delay: var(--d, 0ms);
+}
+.js .reveal.in { opacity: 1; transform: none; }
+.hero .container > * { animation: rise 0.7s ease-out both; }
+.hero .container > :nth-child(2) { animation-delay: 0.15s; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .emblem-gear, .emblem-sheen, .hero::before, .cta::after, .hero .container > * { animation: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
