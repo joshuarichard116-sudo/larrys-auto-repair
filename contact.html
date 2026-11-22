@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Larry's Auto Repair</title>
+  <meta name="description" content="Contact Larry's Auto Repair for a free quote. Call, visit, or send us a message.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <span class="hide-sm">Mon–Fri 8am–6pm · Sat 9am–2pm</span>
+      <a href="tel:5551234567">📞 Call (555) 123-4567</a>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <img src="images/logo-small.jpg" alt="Larry's Auto Repair logo">
+        <span>Larry's Auto Repair</span>
+      </a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="#quote" class="btn btn-red">Get a Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-banner">
+    <div class="container">
+      <span class="eyebrow">Get In Touch</span>
+      <h1>Contact Us</h1>
+      <p>Call, stop by, or send a message for a free estimate.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="container contact-wrap">
+
+      <!-- PLACEHOLDER: update address, phone, email, hours -->
+      <div class="card">
+        <h3>Shop Info</h3>
+        <ul class="info-list" style="margin-top:16px;">
+          <li><span class="icon">📍</span><div><strong>Address</strong><span>123 Main Street<br>Your City, ST 00000</span></div></li>
+          <li><span class="icon">📞</span><div><strong>Phone</strong><a href="tel:5551234567">(555) 123-4567</a></div></li>
+          <li><span class="icon">✉️</span><div><strong>Email</strong><a href="mailto:info@example.com">info@example.com</a></div></li>
+        </ul>
+        <h3 style="margin-top:26px;">Hours</h3>
+        <table class="hours">
+          <tr><td>Monday – Friday</td><td>8:00am – 6:00pm</td></tr>
+          <tr><td>Saturday</td><td>9:00am – 2:00pm</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+
+      <!--
+        QUOTE FORM
+        To make this send emails:
+          1. Make a free account at https://formspree.io
+          2. Create a form and copy its ID (looks like "xyzabcd")
+          3. Replace YOUR_FORM_ID below with that ID
+        Submissions will go to Larry's email. Works on GitHub Pages and any other host.
+      -->
+      <div class="card" id="quote">
+        <h3>Request a Free Quote</h3>
+        <p style="margin-bottom:18px;">Tell us about your vehicle and what's going on. We'll get back to you within one business day.</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required>
+            </div>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email">
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="vehicle">Vehicle (Year / Make / Model)</label>
+              <input id="vehicle" name="vehicle" type="text" placeholder="e.g. 2015 Ford F-150">
+            </div>
+            <div>
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option>Not sure / Diagnostics</option>
+                <option>Oil Change</option>
+                <option>Brakes</option>
+                <option>Engine Repair</option>
+                <option>Battery &amp; Electrical</option>
+                <option>A/C &amp; Heating</option>
+                <option>Suspension &amp; Steering</option>
+                <option>Tires &amp; Alignment</option>
+                <option>Transmission</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="message">What's going on?</label>
+            <textarea id="message" name="message" placeholder="Describe the problem: noises, warning lights, when it happens..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-red">Send Request</button>
+          <p class="form-note">We'll only use your info to contact you about your vehicle.</p>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAP — PLACEHOLDER: in Google Maps, search the shop, click Share > Embed a map, and paste the iframe src here -->
+    <div class="container">
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=123+Main+Street&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Larry's Auto Repair"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="images/logo-small.jpg" alt="Larry's Auto Repair logo">
+          <p>Where quality meets affordability.</p>
+        </div>
+        <div>
+          <h3>Pages</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Visit Us</h3>
+          <ul>
+            <li>123 Main Street</li>
+            <li>Your City, ST 00000</li>
+            <li><a href="tel:5551234567">(555) 123-4567</a></li>
+            <li><a href="mailto:info@example.com">info@example.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">© <span id="year"></span> Larry's Auto Repair. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
