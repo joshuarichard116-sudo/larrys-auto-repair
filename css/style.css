@@ -203,19 +203,33 @@ section { padding: 70px 0; }
 }
 .card:hover { border-color: var(--red); transform: translateY(-3px); }
 .card .icon {
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   display: grid;
   place-items: center;
-  margin-bottom: 16px;
-  border-radius: 10px;
-  background: rgba(227, 18, 27, 0.12);
-  border: 1px solid rgba(227, 18, 27, 0.35);
-  color: var(--red);
-  transition: background 0.2s, color 0.2s;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  /* brushed chrome badge with a red ring, to match the logo */
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.95) 0, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(150deg, #ffffff 0%, #c4c7cd 32%, #7b7e86 55%, #d4d6db 78%, #f2f3f5 100%);
+  border: 3px solid var(--red);
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.35),
+    0 0 0 2px #2a2a2e,
+    0 6px 14px rgba(0, 0, 0, 0.6);
+  transition: transform 0.25s, box-shadow 0.25s;
 }
-.card .icon svg { width: 28px; height: 28px; }
-.card:hover .icon { background: var(--red); color: #fff; }
+.card .icon svg { width: 46px; height: 46px; display: block; }
+.card:hover .icon {
+  transform: rotate(-8deg) scale(1.05);
+  box-shadow:
+    inset 0 2px 2px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.35),
+    0 0 0 2px #2a2a2e,
+    0 0 18px rgba(227, 18, 27, 0.55);
+}
 .card p { color: var(--muted); }
 .card .price { margin-top: 12px; color: var(--chrome); font-weight: 700; }
 
@@ -250,15 +264,18 @@ section { padding: 70px 0; }
 .info-list li { display: flex; gap: 14px; }
 .info-list .icon {
   flex: none;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(227, 18, 27, 0.12);
-  color: var(--red);
+  background:
+    radial-gradient(circle at 32% 24%, rgba(255, 255, 255, 0.95) 0, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(150deg, #ffffff 0%, #c4c7cd 32%, #7b7e86 55%, #d4d6db 78%, #f2f3f5 100%);
+  border: 2px solid var(--red);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.35), 0 4px 10px rgba(0, 0, 0, 0.5);
 }
-.info-list .icon svg { width: 20px; height: 20px; }
+.info-list .icon svg { width: 28px; height: 28px; display: block; }
 .info-list strong { display: block; color: #fff; }
 .info-list span, .info-list a { color: var(--muted); text-decoration: none; }
 
